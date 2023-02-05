@@ -73,3 +73,11 @@
 .bottom-content {
   display: inline-block;
 }
+
+.tableCalculo {
+  padding-top: 2em;
+}
+
+.marginSpace {
+  margin-top: 2em;
+}

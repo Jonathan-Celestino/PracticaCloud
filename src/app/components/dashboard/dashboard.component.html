@@ -1,3 +1,55 @@
-<div class="row adjust-promotions text-center">
-  <span>Aqu&iacute; va el contenido principal</span>
+<div class="row adjust-promotions text-center container">
+  <form [formGroup]="formGroup">
+    <div class="row">
+      <div class="col-lg-3">
+        <label for="">Inversión inicial</label>
+        <input type="text" formControlName="inversionInicial" numbersOnly>
+      </div>
+      <div class="col-lg-3">
+        <label for="">Aportación anual</label>
+        <input type="text" formControlName="aportacionAnual" numbersOnly>
+      </div>
+      <div class="col-lg-3">
+        <label for="">% Incremento anual</label>
+        <input type="text" formControlName="incrementoAnual" numbersOnly>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <label for="">Años de inversión</label>
+        <input type="text" formControlName="anosInversion" numbersOnly>
+      </div>
+      <div class="col-lg-3">
+        <label for="">% Rendimiento</label>
+        <input type="text" formControlName="rendimiento" numbersOnly>
+      </div>
+    </div>
+    <button type="button" class="marginSpace btn btn-primary btn-sm" (click)="calcular()">Calcular</button>
+
+  </form>
+
+
+  <h3 class="tableCalculo"> Calculo </h3>
+  <strong for="">Ganancia por inversión <span> {{ganancia | currency}} </span></strong>
+  <strong for="">Monto Final <span> {{montoFinal | currency}} </span> </strong>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Año</th>
+        <th scope="col">Saldo Inicial</th>
+        <th scope="col">Aportación</th>
+        <th scope="col">Rendimiento</th>
+        <th scope="col">Saldo Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaCalculo">
+        <th scope="row">{{item.ano}}</th>
+        <td>{{  item.saldoInicial | currency }}</td>
+        <td>{{ item.aportacion | currency }}</td>
+        <td>{{ item.rendimiento | currency }}</td>
+        <td>{{ item.saldoFinal | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

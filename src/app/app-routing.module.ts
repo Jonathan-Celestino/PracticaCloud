@@ -1,8 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AuthenticationGuard } from './services/authentication-guard';
 
 const routes: Routes = [
   {
@@ -12,14 +10,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: DashboardComponent,
-    canActivate: [AuthenticationGuard]
+    component: DashboardComponent
   },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-
   // more routiings
   { path: '**', component: NotFoundComponent }
 ];

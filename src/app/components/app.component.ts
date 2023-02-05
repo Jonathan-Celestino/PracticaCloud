@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Role } from '../Models/Identity/role';
-import { User } from '../Models/Identity/user';
-import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +8,11 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class AppComponent {
   public isCollapse = false;
-  public currentUser!: User;
 
   constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService
+    private router: Router
   ) {
-    this.authenticationService.currentUserObservable.subscribe(result => {
-      this.currentUser = result;
-      console.log('user', this.currentUser);
-    });
+
   }
 
   public toggleSidebar(): void {
@@ -34,18 +26,10 @@ export class AppComponent {
   }
 
   public isUserAuthenticated(): boolean {
-    var existsAutthentication = this.currentUser != null;
-
-    if (!existsAutthentication && this.isCollapse == true) {
-      this.isCollapse = false;
-    }
-
-    return existsAutthentication;
+    return false;
   }
 
   public isAdministrator(): boolean {
-    return (
-      this.currentUser != null && this.currentUser.Role == Role.Administrator
-    );
+    return false;
   }
 }
